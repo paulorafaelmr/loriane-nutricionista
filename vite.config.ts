@@ -1,0 +1,20 @@
+import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+// https://vite.dev/config/
+export default defineConfig(({ command }) => ({
+  plugins: [react(), tailwindcss()],
+  base: command === "build" ? "/loriane-nutricionista/" : "/",
+  server: {
+    hmr: {
+      overlay: false
+    }
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+}))
